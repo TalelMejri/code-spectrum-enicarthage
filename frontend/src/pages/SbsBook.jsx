@@ -4,7 +4,7 @@ import { Experience } from "../components/Experience";
 import { UI } from "../components/UI";
 import { Loader } from "@react-three/drei";
 function SbsBook() {
-    const [version, setVersion] = useState(1);
+    const [version, setVersion] = useState(2);
     return (
         <>
             <Loader />
@@ -15,7 +15,7 @@ function SbsBook() {
             }}>
                 <group position-y={0}>
                     <Suspense fallback={null}>
-                        <Experience version={version} />
+                        <Experience key={version} version={version} />
                     </Suspense>
                 </group>
             </Canvas>

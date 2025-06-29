@@ -262,12 +262,12 @@ export const Book = ({ version, ...props }) => {
   const [delayedPage, setDelayedPage] = useState(page);
 
   const allBooks = {
-    "0": ["version1/02.png", "version1/03.png"],
-    "1": ["version2/02.png", "version2/03.png"],
+    "1": ["version1/02.png", "version1/03.png"],
+    "2": ["version2/02.png", "version2/03.png"],
   };
 
 
-  const pictures = allBooks[version - 1] || allBooks["0"];
+  const pictures = allBooks[version ] || allBooks["1"];
   const back = version == 1 ? "version1/34.png" : "version2/23.png";
   const front = version == 1 ? "version1/01.png" : "version2/01.png";
   const dynamicPages = useMemo(() => {
