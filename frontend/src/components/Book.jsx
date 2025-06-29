@@ -88,16 +88,12 @@ const pageMaterials = [
 pages.forEach((page) => {
   useTexture.preload(`/textures/${page.front}`);
   useTexture.preload(`/textures/${page.back}`);
-  useTexture.preload(`/textures/book-cover-roughness.png`);
 });
 
 const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
   const [picture, picture2, pictureRoughness] = useTexture([
     `/textures/${front}`,
     `/textures/${back}`,
-    ...(number === 0 || number === pages.length - 1
-      ? [`/textures/book-cover-roughness.png`]
-      : []),
   ]);
   picture.colorSpace = picture2.colorSpace = SRGBColorSpace;
   const group = useRef();
@@ -117,7 +113,7 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
         bone.position.x = SEGMENT_WIDTH;
       }
       if (i > 0) {
-        bones[i - 1].add(bone); 
+        bones[i - 1].add(bone);
       }
     }
     const skeleton = new Skeleton(bones);
@@ -261,30 +257,25 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
   );
 };
 
-export const Book = ({ bookId = "0", ...props }) => {
+export const Book = ({ version, ...props }) => {
   const [page] = useAtom(pageAtom);
   const [delayedPage, setDelayedPage] = useState(page);
 
   const allBooks = {
-    "0": ["sb.jpg", "cs.jpg", "ras.jpg", "aess.jpg", "ias.jpg", "wie.jpg"],
-    "1": ["sb.jpg", "cs.jpg", "ras.jpg", "aess.jpg", "ias.jpg", "wie.jpg"],
-    "2": ["cs_bz.jpg"],
+    "0": ["version1/02.png", "version1/03.png"],
+    "1": ["version2/02.png", "version2/03.png"],
   };
 
-  const bookFormat = {
-    "0": { width: 1.28, height: 1.71 },
-    "1": { width: 1.0, height: 1.5 },
-    "2": { width: 1.5, height: 2.0 },
-  };
 
-  const pictures = allBooks[bookId] || allBooks["0"];
-
+  const pictures = allBooks[version - 1] || allBooks["0"];
+  const back = version == 1 ? "version1/34.png" : "version2/23.png";
+  const front = version == 1 ? "version1/01.png" : "version2/01.png";
   const dynamicPages = useMemo(() => {
-    const result = [{ front: "book-cover.png", back: pictures[0] }];
+    const result = [{ front: front, back: pictures[0] }];
     for (let i = 1; i < pictures.length - 1; i += 2) {
       result.push({ front: pictures[i], back: pictures[i + 1] });
     }
-    result.push({ front: pictures[pictures.length - 1], back: "book-back.png" });
+    result.push({ front: pictures[pictures.length - 1], back: back });
     return result;
   }, [pictures]);
 

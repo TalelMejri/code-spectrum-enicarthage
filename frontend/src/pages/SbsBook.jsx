@@ -1,24 +1,21 @@
-import React from "react";
 import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { Experience } from "../components/Experience";
 import { UI } from "../components/UI";
 import { Loader } from "@react-three/drei";
-import { useParams } from "react-router-dom";
 function SbsBook() {
-    const { id,name } = useParams();
-    
+    const [version, setVersion] = useState(1);
     return (
         <>
             <Loader />
-            <UI name={name}/>
+            <UI version={version} setVersion={setVersion} />
             <Canvas shadows camera={{
                 position: [-0.5, 1, window.innerWidth > 800 ? 4 : 7],
                 fov: 45,
             }}>
                 <group position-y={0}>
                     <Suspense fallback={null}>
-                        <Experience bookId={id} />
+                        <Experience version={version} />
                     </Suspense>
                 </group>
             </Canvas>

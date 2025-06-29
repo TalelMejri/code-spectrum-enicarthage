@@ -4,16 +4,12 @@ import Home from './pages/Home';
 
 function App() {
   return (
-    <div className='bg-gradient-to-b from-ieee-blue-light to-ieee-blue-dark'>
-        <BrowserRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/landingPage/:id/:name" element={<SbsBook />} />
+        <Route path="/landingPage" element={<SbsBook />} />
       </Routes>
     </BrowserRouter>
-    </div>
-
-   
   );
 }
 

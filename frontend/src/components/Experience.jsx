@@ -1,6 +1,6 @@
 import { Environment, Float, OrbitControls } from "@react-three/drei";
 import { Book } from "./Book";
-export const Experience = ({bookId }) => {
+export const Experience = ({ version }) => {
 
   return (
     <>
@@ -10,7 +10,7 @@ export const Experience = ({bookId }) => {
         speed={2}
         rotationIntensity={2}
       >
-        <Book bookId={bookId}  />
+        <Book version={version} />
       </Float>
       <OrbitControls />
       <Environment preset="studio"></Environment>

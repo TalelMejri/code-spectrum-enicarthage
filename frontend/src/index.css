@@ -6,29 +6,5 @@
 #root {
   width: 100vw;
   height: 100vh;
-  background: radial-gradient(#2200ff, #ffffff 80%);
-}
-.delay-100 {
-    animation-delay: 100ms;
-}
-.delay-200 {
-    animation-delay: 200ms;
-}
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.outline-text {
-  -webkit-text-stroke: 1px white;
-}
-
-
-html {
-  scroll-behavior: smooth;
-}
-
-.balls{
-  cursor: pointer;
+  
 }
