@@ -3,7 +3,7 @@ import ieee from "../assets/Full_White.png"
 import Giscus from "@giscus/react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { toast } from 'react-hot-toast';
+
 function Home() {
     const [deferredPrompt, setDeferredPrompt] = useState(null);
     const [isIOS, setIsIOS] = useState(false);
@@ -33,7 +33,7 @@ function Home() {
             deferredPrompt.prompt();
             const { outcome } = await deferredPrompt.userChoice;
             if (outcome === "accepted") {
-                toast.success("App installed successfully !");
+
             }
             setDeferredPrompt(null);
         }
