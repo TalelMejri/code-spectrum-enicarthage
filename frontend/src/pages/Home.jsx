@@ -3,7 +3,7 @@ import ieee from "../assets/Full_White.png"
 import Giscus from "@giscus/react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import { toast } from 'react-hot-toast';
 function Home() {
     const [deferredPrompt, setDeferredPrompt] = useState(null);
     const [isIOS, setIsIOS] = useState(false);
@@ -52,7 +52,7 @@ function Home() {
             </header>
             <main>
                 <div className="banner">
-                    <h5 >@IEEE CS ENICarthage SBC { isInstalled}</h5>
+                    <h5 >@IEEE CS ENICarthage SBC {isInstalled}</h5>
                     <div>
                         <h1 className="left">Enjoy your reading</h1>
                         <h1 className="right">Code Spectrum</h1>
