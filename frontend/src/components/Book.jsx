@@ -262,12 +262,68 @@ export const Book = ({ version, ...props }) => {
   const [delayedPage, setDelayedPage] = useState(page);
 
   const allBooks = {
-    "1": ["version1/02.png", "version1/03.png"],
-    "2": ["version2/02.png", "version2/03.png"],
+    "1": [
+      "version1/02.png",
+      "version1/03.png",
+      "version1/04.png",
+      "version1/05.png",
+      "version1/06.png",
+      "version1/07.png",
+      "version1/08.png",
+      "version1/09.png",
+      "version1/10.png",
+      "version1/11.png",
+      "version1/12.png",
+      "version1/13.png",
+      "version1/14.png",
+      "version1/15.png",
+      "version1/16.png",
+      "version1/17.png",
+      "version1/18.png",
+      "version1/19.png",
+      "version1/20.png",
+      "version1/21.png",
+      "version1/22.png",
+      "version1/23.png",
+      "version1/24.png",
+      "version1/25.png",
+      "version1/26.png",
+      "version1/27.png",
+      "version1/28.png",
+      "version1/29.png",
+      "version1/30.png",
+      "version1/31.png",
+      "version1/32.png",
+      "version1/33.png"
+    ],
+    "2": [
+      "version2/02.png",
+      "version2/03.png",
+      "version2/04.png",
+      "version2/05.png",
+      "version2/06.png",
+      "version2/07.png",
+      "version2/08.png",
+      "version2/09.png",
+      "version2/10.png",
+      "version2/11.png",
+      "version2/12.png",
+      "version2/13.png",
+      "version2/14.png",
+      "version2/15.png",
+      "version2/16.png",
+      "version2/17.png",
+      "version2/18.png",
+      "version2/19.png",
+      "version2/20.png",
+      "version2/21.png",
+      "version2/22.png",
+      "version2/23.png"
+    ]
   };
 
 
-  const pictures = allBooks[version ] || allBooks["1"];
+  const pictures = allBooks[version] || allBooks["1"];
   const back = version == 1 ? "version1/34.png" : "version2/23.png";
   const front = version == 1 ? "version1/01.png" : "version2/01.png";
   const dynamicPages = useMemo(() => {
@@ -278,6 +334,7 @@ export const Book = ({ version, ...props }) => {
     result.push({ front: pictures[pictures.length - 1], back: back });
     return result;
   }, [pictures]);
+
 
   useEffect(() => {
     let timeout;

@@ -6,7 +6,7 @@ import { Loader } from "@react-three/drei";
 function SbsBook() {
     const [version, setVersion] = useState(2);
     return (
-        <>
+        < >
             <Loader />
             <UI version={version} setVersion={setVersion} />
             <Canvas shadows camera={{

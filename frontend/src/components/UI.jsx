@@ -1,5 +1,6 @@
 import { atom, useAtom } from "jotai";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export const pageAtom = atom(0);
 export const pages = [
@@ -24,6 +25,11 @@ export const UI = ({ setVersion }) => {
   return (
     <>
       <main className="pointer-events-none select-none fixed inset-0 flex flex-col justify-between z-10 bg-transparent">
+        <div>
+          <Link to="/">
+          <button className="p-1 m-2 rounded text-white bg-blue-700 hover:bg-blue-800 pointer-events-auto">Back</button>
+        </Link>
+          </div>
         <div className="w-full absolute bottom-0 overflow-auto pointer-events-auto flex justify-center items-center gap-6 py-4 bg-white/20 backdrop-blur-sm">
           <button onClick={() => setVersion(1)} className="font-bold rounded-md hover:text-blue-700 transition">
             Version 1
