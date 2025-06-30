@@ -4,7 +4,7 @@ import Giscus from "@giscus/react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Modal from 'react-modal';
-import { ToastContainer, toast } from 'react-toastify';
+
 Modal.setAppElement('#root');
 function Home() {
     const [deferredPrompt, setDeferredPrompt] = useState(null);
@@ -45,7 +45,6 @@ function Home() {
             deferredPrompt.prompt();
             const { outcome } = await deferredPrompt.userChoice;
             if (outcome === "accepted") {
-                toast(" Application installed successfully !");
             }
             setDeferredPrompt(null);
             closeModal();
@@ -56,7 +55,6 @@ function Home() {
 
     return (
         <div className="home ">
-            <ToastContainer />
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
