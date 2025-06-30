@@ -3,11 +3,23 @@ import ieee from "../assets/Full_White.png"
 import Giscus from "@giscus/react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import Modal from 'react-modal';
+import { ToastContainer, toast } from 'react-toastify';
+Modal.setAppElement('#root');
 function Home() {
     const [deferredPrompt, setDeferredPrompt] = useState(null);
     const [isIOS, setIsIOS] = useState(false);
     const [isInstalled, setIsInstalled] = useState(false);
+    const [modalIsOpen, setIsOpen] = useState(false);
+
+    function openModal() {
+        setIsOpen(true);
+    }
+
+    function closeModal() {
+        setIsOpen(false);
+    }
+
     useEffect(() => {
         const isIOSDevice = /iPad|iPhone|iPod/.test(navigator.userAgent);
         setIsIOS(isIOSDevice);
@@ -33,18 +45,57 @@ function Home() {
             deferredPrompt.prompt();
             const { outcome } = await deferredPrompt.userChoice;
             if (outcome === "accepted") {
-
+                toast(" Application installed successfully !");
             }
             setDeferredPrompt(null);
+            closeModal();
         }
+        closeModal();
     };
 
-    const IosInstall = () => {
-
-    }
 
     return (
-        <div className="home">
+        <div className="home ">
+            <ToastContainer />
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                className="flex text-center justify-center min-h-full items-center p-5 "
+            >
+                <div className="bg-[#2d2a44] text-white p-5 rounded shadow-md   ">
+                    <h2 className="font-bold text-center">  Download App</h2>
+                    {isIOS ? (
+                        <div className="py-5 mt-5">
+                            To install this application on your iPhone or iPad:
+                            <ol className="list-decimal pl-5 mt-2">
+                                <li>
+                                    Tap the <strong>Share</strong> button in Safari.
+                                </li>
+                                <li>
+                                    Select <strong>Add to Home Screen</strong>.
+                                </li>
+                                <li>
+                                    Confirm by tapping <strong>Add</strong>.
+                                </li>
+                            </ol>
+                            <div className="flex justify-end gap-5 py-5">
+                                <button className="bg-transparent  hover:bg-[#1d1b34] border p-2 rounded " onClick={closeModal}>Cancel</button>
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="text-center">
+                            <div className="py-5 mt-5">
+                                Install our app for the best experience and quick access from your home screen.
+                            </div>
+                            <div className="flex justify-end gap-5 py-5">
+                                <button className="bg-transparent  hover:bg-[#1d1b34] border p-2 rounded " onClick={closeModal}>Cancel</button>
+                                <button className="bg-white text-[#1d1b34] border p-2 rounded  hover:bg-[#1d1b34] hover:text-white" onClick={handleInstallClick} >Download</button>
+                            </div>
+                        </div>
+
+                    )}
+                </div>
+            </Modal>
             <header className="flex justify-center pt-16">
                 <figure>
                     <img src={ieee} />
@@ -67,7 +118,7 @@ function Home() {
                         </Link>
                         {
                             !isInstalled && (
-                                <button onClick={isIOS ? IosInstall : handleInstallClick} >
+                                <button onClick={openModal} >
                                     Download
                                 </button>)
                         }

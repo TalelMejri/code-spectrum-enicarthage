@@ -1,7 +1,7 @@
 import { atom, useAtom } from "jotai";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import { ToastContainer, toast } from 'react-toastify';
 export const pageAtom = atom(0);
 export const pages = [
   {
@@ -15,6 +15,7 @@ export const UI = ({ setVersion }) => {
   const SaySomething = () => {
     const utterance = new SpeechSynthesisUtterance("Stay Tuned");
     speechSynthesis.speak(utterance);
+    toast(" Stay Tuned For Code Spectrum 3");
   }
 
   useEffect(() => {
@@ -26,10 +27,11 @@ export const UI = ({ setVersion }) => {
     <>
       <main className="pointer-events-none select-none fixed inset-0 flex flex-col justify-between z-10 bg-transparent">
         <div>
+          <ToastContainer  />
           <Link to="/">
-          <button className="p-1 m-2 rounded text-white bg-blue-700 hover:bg-blue-800 pointer-events-auto">Back</button>
-        </Link>
-          </div>
+            <button className="p-1 m-2 rounded text-white bg-blue-700 hover:bg-blue-800 pointer-events-auto">Back</button>
+          </Link>
+        </div>
         <div className="w-full absolute bottom-0 overflow-auto pointer-events-auto flex justify-center items-center gap-6 py-4 bg-white/20 backdrop-blur-sm">
           <button onClick={() => setVersion(1)} className="font-bold rounded-md hover:text-blue-700 transition">
             Version 1
