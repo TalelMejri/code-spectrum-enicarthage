@@ -319,13 +319,49 @@ export const Book = ({ version, ...props }) => {
       "version2/21.png",
       "version2/22.png",
       "version2/23.png"
+    ],
+    "3": [
+      "version3/02.png",
+      "version3/03.png",
+      "version3/04.png",
+      "version3/05.png",
+      "version3/06.png",
+      "version3/07.png",
+      "version3/08.png",
+      "version3/09.png",
+      "version3/10.png",
+      "version3/11.png",
+      "version3/12.png",
+      "version3/13.png",
+      "version3/14.png",
+      "version3/15.png",
+      "version3/16.png",
+      "version3/17.png",
+      "version3/18.png",
+      "version3/19.png",
+      "version3/20.png",
+      "version3/21.png",
+      "version3/22.png",
+      "version3/23.png",
+      "version3/24.png",
+      "version3/25.png",
+      "version3/26.png",
+      "version3/27.png",
+      "version3/28.png",
+      "version3/29.png",
+      "version3/30.png",
+      "version3/31.png",
+      "version3/32.png",
+      "version3/33.png",
+      "version3/34.png",
+      "version3/35.png"
     ]
   };
 
 
   const pictures = allBooks[version] || allBooks["1"];
-  const back = version == 1 ? "version1/34.png" : "version2/23.png";
-  const front = version == 1 ? "version1/01.png" : "version2/01.png";
+  const back = version == 1 ? "version1/34.png" : version == 2 ? "version2/23.png" : "version3/35.png";
+  const front = version == 1 ? "version1/01.png" : version == 2 ? "version2/01.png" : "version3/01.png";
   const dynamicPages = useMemo(() => {
     const result = [{ front: front, back: pictures[0] }];
     for (let i = 1; i < pictures.length - 1; i += 2) {

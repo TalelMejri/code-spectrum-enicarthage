@@ -4,7 +4,7 @@ import { Experience } from "../components/Experience";
 import { UI } from "../components/UI";
 import { Loader } from "@react-three/drei";
 function SbsBook() {
-    const [version, setVersion] = useState(2);
+    const [version, setVersion] = useState(3);
     return (
         < >
             <Loader />
